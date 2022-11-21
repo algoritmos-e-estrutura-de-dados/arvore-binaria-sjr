@@ -6,29 +6,29 @@ class Binary_tree:
     def __init__(self):
         self.root = None
 
-    # def adicionar(self, value):
-    #     node = Node(value)
-    #     if self.root is None:
-    #         self.root = node
-    #
-    #     else:
-    #         pai: Node
-    #         while (True):
-    #             if self.root.value <= value:
-    #                 pai = self.root
-    #                 self.root = self.root.getEsquerda()
-    #                 filho_esquerda = True  # verificar se há valor na esquerda
-    #             else:
-    #                 pai = self.root
-    #                 self.root = self.root.getDireita()
-    #                 filho_esquerda = False  # verificra se há na direita
-    #
-    #             if self.root is None:
-    #                 break
-    #         if filho_esquerda is False:
-    #             pai.setDireita(node)
-    #         else:
-    #             pai.setEsquerda(node)
+    def adicionar(self, value):
+        node = Node(value)
+        if self.root is None:
+            self.root = node
+
+        else:
+            aux = self.root
+            while (True):
+                if aux.value <= value:
+                    pai = aux
+                    aux = aux.getEsquerda()
+                    filho_esquerda = True  # verificar se há valor na esquerda
+                else:
+                    pai = aux
+                    aux = aux.getDireita()
+                    filho_esquerda = False  # verificra se há na direita
+
+                if aux is None:
+                    break
+            if filho_esquerda is False:
+                pai.setDireita(node)
+            else:
+                pai.setEsquerda(node)
 
 
 
