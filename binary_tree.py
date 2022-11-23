@@ -1,7 +1,7 @@
 from node import Node
 
 
-class Binary_tree:
+class BinaryTree:
 
     def __init__(self):
         self.root = None
@@ -13,15 +13,18 @@ class Binary_tree:
 
         else:
             aux = self.root
-            while (True):
+            while True:
                 if aux.value <= value:
                     pai = aux
+                    print(aux.getEsquerda())
                     aux = aux.getEsquerda()
+                    print(aux)
                     filho_esquerda = True  # verificar se há valor na esquerda
                 else:
                     pai = aux
                     aux = aux.getDireita()
-                    filho_esquerda = False  # verificra se há na direita
+                    print(aux)
+                    filho_esquerda = False  # verificar se há na direita
 
                 if aux is None:
                     break
@@ -30,7 +33,50 @@ class Binary_tree:
             else:
                 pai.setEsquerda(node)
 
+    def remover(self, value):
+        aux = self.root
+        if aux.value is None:
+            print("Árvore vazia")
+            return False
+        # realizar o percorrimento para achar o elemanto
 
+        while aux.value != value:
+            print(aux.value)
+            pai = aux
+            if value < aux.value:
+               # print(aux.getDireita()) # getEsquerda não esta armazenando valor
+                aux = aux.getEsquerda()
+                filho_esquerda = True
+            else:
+                aux = aux.getDireita()
+                filho_esquerda = False
+
+            if aux is None:
+                # break
+                return False # não está saindo do loop
+        # remoção do elemento
+        if aux.getEsquerda() is None and aux.getDireita() is None:
+            if aux == self.root:
+                self.root = None
+            elif filho_esquerda is True:
+                pai.setEsquerda(None)
+            else:
+                pai.setDireita(None)
+        elif aux.getDireita() is None:
+            if aux == self.root:
+                self.root = self.root.getDireita()
+            elif filho_esquerda is True:
+                pai.setEsquerda(aux.getEsquerda())
+            else:
+                pai.setDireita(aux.getEsquerda())
+        else:
+            if aux == self.root:
+                self.root = self.root.getDireita()
+            elif filho_esquerda is True:
+                pai.setEsquerda(aux.getDireita())
+            else:
+                pai.setDireita(aux.getDireita())
+        return True
 
     # preorder
     def preorder_print(self, start, string):

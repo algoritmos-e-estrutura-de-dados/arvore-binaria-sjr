@@ -1,8 +1,11 @@
-from binary_tree import Binary_tree
+from binary_tree import BinaryTree
 
-arvore = Binary_tree()
+arvore = BinaryTree()
+arvore.adicionar(5)
 arvore.adicionar(3)
+arvore.adicionar(4)
 arvore.adicionar(2)
-arvore.adicionar(1)
-
 arvore.print_arvore("postorder")
+arvore.remover(4)
+arvore.print_arvore("postorder")
+
