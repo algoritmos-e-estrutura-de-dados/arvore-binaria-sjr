@@ -13,17 +13,17 @@ class BinaryTree:
 
         else:
             aux = self.root
+            print(aux.getDireita())
             while True:
-                if aux.value <= value:
+                if aux.value >= value:
                     pai = aux
-                    print(aux.getEsquerda())
+                    print("auxEsquerda",aux.getEsquerda()) #get esquerda não esta  funcionando
                     aux = aux.getEsquerda()
-                    print(aux)
                     filho_esquerda = True  # verificar se há valor na esquerda
                 else:
                     pai = aux
                     aux = aux.getDireita()
-                    print(aux)
+                    print(aux) # getDireita ---> funcionando
                     filho_esquerda = False  # verificar se há na direita
 
                 if aux is None:
@@ -33,15 +33,17 @@ class BinaryTree:
             else:
                 pai.setEsquerda(node)
 
+
+
     def remover(self, value):
         aux = self.root
         if aux.value is None:
-            print("Árvore vazia")
+           # print("Árvore vazia")
             return False
         # realizar o percorrimento para achar o elemanto
 
         while aux.value != value:
-            print(aux.value)
+           # print(aux.value)
             pai = aux
             if value < aux.value:
                # print(aux.getDireita()) # getEsquerda não esta armazenando valor
@@ -55,7 +57,7 @@ class BinaryTree:
                 # break
                 return False # não está saindo do loop
         # remoção do elemento
-        if aux.getEsquerda() is None and aux.getDireita() is None:
+        if aux.getEsquerda() is None and aux.getDireita() is None:   #testar depois se está funcionando
             if aux == self.root:
                 self.root = None
             elif filho_esquerda is True:
