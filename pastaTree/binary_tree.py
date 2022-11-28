@@ -75,7 +75,7 @@ class BinaryTree:
                         if aux.getEsquerda().getDireita() is None and aux.getEsquerda().getEsquerda() is None:#no sem filhos
                             self.root.setEsquerda(None)
                         elif aux.getEsquerda().getDireita() is not None and aux.getEsquerda().getEsquerda() is None:#somente filhos a direita
-                            self.root.getEsquerda(aux.getEsquerda().getDireita())
+                            self.root.setEsquerda(aux.getEsquerda().getDireita())
                         elif aux.getEsquerda().getDireita() is None and aux.getEsquerda().getEsquerda() is not None: #somente filho a esquerda
                             self.root.setEsquerda(aux.getEsquerda.getEsquerda())
                         elif aux.getEsquerda().getDireita() is not None and aux.getEsquerda().getEsquerda() is not None:
@@ -90,7 +90,9 @@ class BinaryTree:
                 if aux.getDireita().getDireita() is None and aux.getDireita().getEsquerda() is None:
                     self.root.setDireita(None)
                 elif aux.getDireita().getDireita() is not None and aux.getDireita().getEsquerda() is None: #somente o filho a direita
-                    self.root.getDireita(aux.getEsquerda().getDireita())
+                    self.root.setDireita(aux.getDireita().getDireita())
+                elif aux.getDireita().getDireita() is None and aux.getDireita().getEsquerda() is not None:  # somente o filho a esquerda
+                    self.root.setDireita(aux.getDireita().getEsquerda())
                 elif aux.getDireita().getDireita() is not None and aux.getDireita().getEsquerda() is not None:
                     aux2 = self.root.getDireita().getEsquerda()  # pegando o filho a direita do nó a ser removido
                     self.root.setDireita(aux.getEsquerda().getDireita())
