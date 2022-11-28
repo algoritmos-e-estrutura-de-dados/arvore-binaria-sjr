@@ -1,7 +1,12 @@
 from pastaTree.binary_tree import BinaryTree
 
 arvore = BinaryTree()
-arvore.adicionar(12)
+# arvore.adicionar(30)
+# arvore.adicionar(40)
+# arvore.adicionar(31)
+# arvore.adicionar(41)
+
+
 arvore.adicionar(8)
 arvore.adicionar(5)
 arvore.adicionar(10)
@@ -11,7 +16,7 @@ arvore.adicionar(9)
 arvore.adicionar(11)
 
 
-arvore.remover(8)
+arvore.remover(5)
 
 
 arvore.print_arvore("preorder")

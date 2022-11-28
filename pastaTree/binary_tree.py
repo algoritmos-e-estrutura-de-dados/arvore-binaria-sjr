@@ -45,7 +45,7 @@ class BinaryTree:
             if aux.getEsquerda() is None and aux.getDireita() is None:
                 self.root = None
                 print("raiz removida")
-                # removendo esquerda
+                # removendo esquerdaW
             elif aux.getEsquerda() is not None and aux.getDireita() is None:
                 if self.root.getEsquerda() is None:
                     self.root = self.root.getEsquerda()
@@ -79,22 +79,24 @@ class BinaryTree:
                         elif aux.getEsquerda().getDireita() is None and aux.getEsquerda().getEsquerda() is not None: #somente filho a esquerda
                             self.root.setEsquerda(aux.getEsquerda.getEsquerda())
                         elif aux.getEsquerda().getDireita() is not None and aux.getEsquerda().getEsquerda() is not None:
+                            print("2 filhos")
                             aux2 = self.root.getEsquerda().getEsquerda()#pegando o filho a esquerda do nó a ser removido
                             self.root.setEsquerda(aux.getEsquerda().getDireita())
-                            pai, _ =self.buscar_folha(aux.getEsquerda(),True)
+                            pai, _ = self.buscar_folha(aux.getEsquerda(), True)
                             pai.setEsquerda(aux2)
                             self.root.setEsquerda(pai)
-                    else: #verificação do filho a direita
-                        if aux.getDireita().getDireita() is None and aux.getDireita().getEsquerda() is None:
-                            self.root.setDireita(None)
-                        elif aux.getDireita().getDireita() is not None and aux.getDireita().getEsquerda() is None: #somente o filho a direita
-                            self.root.getDireita(aux.getEsquerda().getDireita())
-                        elif aux.getDireita().getDireita() is not None and aux.getDireita().getEsquerda() is not None:
-                            aux2 = self.root.getDireita().getEsquerda()  # pegando o filho a direita do nó a ser removido
-                            self.root.setDireita(aux.getEsquerda().getDireita())
-                            pai, _ = self.buscar_folha(aux.getDireita(), True)
-                            pai.setEsquerda(aux2)
-                            self.root.setDireita(pai)
+            else: #verificação do filho a direita
+                aux = self.root
+                if aux.getDireita().getDireita() is None and aux.getDireita().getEsquerda() is None:
+                    self.root.setDireita(None)
+                elif aux.getDireita().getDireita() is not None and aux.getDireita().getEsquerda() is None: #somente o filho a direita
+                    self.root.getDireita(aux.getEsquerda().getDireita())
+                elif aux.getDireita().getDireita() is not None and aux.getDireita().getEsquerda() is not None:
+                    aux2 = self.root.getDireita().getEsquerda()  # pegando o filho a direita do nó a ser removido
+                    self.root.setDireita(aux.getEsquerda().getDireita())
+                    pai, _ = self.buscar_folha(aux.getDireita(), True)
+                    pai.setEsquerda(aux2)
+                    self.root.setDireita(pai)
 
 
 
